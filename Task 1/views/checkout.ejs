@@ -1,0 +1,53 @@
+<% title = 'Checkout — ShopEasy' %>
+<%- include('partials/header') %>
+
+<h1 class="page-title">Checkout</h1>
+
+<div class="checkout-layout">
+  <form action="/checkout" method="POST" class="checkout-form">
+    <h2>Shipping Details</h2>
+
+    <label for="fullName">Full Name</label>
+    <input type="text" id="fullName" name="fullName" value="<%= currentUser.name %>" required />
+
+    <label for="address">Address</label>
+    <input type="text" id="address" name="address" placeholder="House #, Street, Area" required />
+
+    <label for="city">City</label>
+    <input type="text" id="city" name="city" required />
+
+    <label for="phone">Phone Number</label>
+    <input type="tel" id="phone" name="phone" required />
+
+    <h2>Payment Method</h2>
+    <div class="payment-options">
+      <label class="radio-option">
+        <input type="radio" name="paymentMethod" value="Cash on Delivery" checked />
+        Cash on Delivery
+      </label>
+      <label class="radio-option">
+        <input type="radio" name="paymentMethod" value="Card" />
+        Credit / Debit Card (demo)
+      </label>
+    </div>
+
+    <button type="submit" class="btn-solid full-width">Place Order</button>
+  </form>
+
+  <div class="order-summary">
+    <h2>Order Summary</h2>
+    <% items.forEach(item => { %>
+      <div class="summary-row">
+        <span><%= item.product.emoji %> <%= item.product.name %> &times; <%= item.qty %></span>
+        <span>$<%= item.subtotal.toFixed(2) %></span>
+      </div>
+    <% }) %>
+    <hr />
+    <div class="summary-row summary-total">
+      <span>Total</span>
+      <span>$<%= total.toFixed(2) %></span>
+    </div>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

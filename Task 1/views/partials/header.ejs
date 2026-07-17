@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= typeof title !== 'undefined' ? title : 'ShopEasy' %></title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <header class="navbar">
+    <div class="container navbar-inner">
+      <a href="/" class="logo">🛍️ ShopEasy</a>
+
+      <form class="search-form" action="/" method="GET">
+        <input type="text" name="search" placeholder="Search products..." value="<%= typeof search !== 'undefined' ? search : '' %>" />
+        <button type="submit">Search</button>
+      </form>
+
+      <nav class="nav-links">
+        <a href="/cart" class="cart-link">
+          🛒 Cart
+          <% if (cartCount > 0) { %>
+            <span class="badge"><%= cartCount %></span>
+          <% } %>
+        </a>
+        <% if (currentUser) { %>
+          <a href="/orders">My Orders</a>
+          <span class="user-greeting">Hi, <%= currentUser.name %></span>
+          <a href="/logout" class="btn-outline">Logout</a>
+        <% } else { %>
+          <a href="/login" class="btn-outline">Login</a>
+          <a href="/register" class="btn-solid">Register</a>
+        <% } %>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <% if (successMsg) { %>
+      <div class="alert alert-success"><%= successMsg %></div>
+    <% } %>
+    <% if (errorMsg) { %>
+      <div class="alert alert-error"><%= errorMsg %></div>
+    <% } %>

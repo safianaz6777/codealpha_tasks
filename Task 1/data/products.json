@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "name": "Wireless Headphones",
+    "category": "Electronics",
+    "price": 59.99,
+    "stock": 23,
+    "emoji": "🎧",
+    "color": "#6C5CE7",
+    "description": "Over-ear wireless headphones with noise cancellation, 30-hour battery life and deep bass sound."
+  },
+  {
+    "id": 2,
+    "name": "Smart Watch",
+    "category": "Electronics",
+    "price": 89.5,
+    "stock": 15,
+    "emoji": "⌚",
+    "color": "#00B894",
+    "description": "Fitness tracking smart watch with heart-rate monitor, sleep tracking and 7-day battery life."
+  },
+  {
+    "id": 3,
+    "name": "Running Shoes",
+    "category": "Fashion",
+    "price": 45,
+    "stock": 40,
+    "emoji": "👟",
+    "color": "#E17055",
+    "description": "Lightweight breathable running shoes with cushioned sole, perfect for daily workouts."
+  },
+  {
+    "id": 4,
+    "name": "Backpack",
+    "category": "Fashion",
+    "price": 32.75,
+    "stock": 30,
+    "emoji": "🎒",
+    "color": "#0984E3",
+    "description": "Durable water-resistant backpack with laptop compartment and multiple pockets."
+  },
+  {
+    "id": 5,
+    "name": "Coffee Maker",
+    "category": "Home",
+    "price": 74.99,
+    "stock": 12,
+    "emoji": "☕",
+    "color": "#D63031",
+    "description": "Automatic drip coffee maker with programmable timer and 12-cup glass carafe."
+  },
+  {
+    "id": 6,
+    "name": "Desk Lamp",
+    "category": "Home",
+    "price": 19.99,
+    "stock": 50,
+    "emoji": "💡",
+    "color": "#FDCB6E",
+    "description": "Adjustable LED desk lamp with 3 brightness levels and USB charging port."
+  },
+  {
+    "id": 7,
+    "name": "Bluetooth Speaker",
+    "category": "Electronics",
+    "price": 39.99,
+    "stock": 20,
+    "emoji": "🔊",
+    "color": "#00CEC9",
+    "description": "Portable waterproof bluetooth speaker with 12-hour playtime and rich stereo sound."
+  },
+  {
+    "id": 8,
+    "name": "Sunglasses",
+    "category": "Fashion",
+    "price": 24.5,
+    "stock": 35,
+    "emoji": "🕶️",
+    "color": "#2D3436",
+    "description": "UV-protection polarized sunglasses with a classic lightweight frame."
+  }
+]

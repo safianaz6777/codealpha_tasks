@@ -1,0 +1,52 @@
+<% title = 'Your Cart — ShopEasy' %>
+<%- include('partials/header') %>
+
+<h1 class="page-title">Your Shopping Cart</h1>
+
+<% if (items.length === 0) { %>
+  <div class="empty-state">
+    <p>Your cart is empty.</p>
+    <a href="/" class="btn-solid">Browse Products</a>
+  </div>
+<% } else { %>
+  <div class="cart-table">
+    <div class="cart-row cart-header">
+      <span>Product</span>
+      <span>Price</span>
+      <span>Quantity</span>
+      <span>Subtotal</span>
+      <span></span>
+    </div>
+    <% items.forEach(item => { %>
+      <div class="cart-row">
+        <span class="cart-product">
+          <span class="cart-emoji"><%= item.product.emoji %></span>
+          <a href="/product/<%= item.product.id %>"><%= item.product.name %></a>
+        </span>
+        <span>$<%= item.product.price.toFixed(2) %></span>
+        <span>
+          <form action="/cart/update/<%= item.product.id %>" method="POST" class="qty-form">
+            <input type="number" name="quantity" value="<%= item.qty %>" min="0" max="<%= item.product.stock %>" />
+            <button type="submit" class="btn-outline small">Update</button>
+          </form>
+        </span>
+        <span>$<%= item.subtotal.toFixed(2) %></span>
+        <span>
+          <form action="/cart/remove/<%= item.product.id %>" method="POST">
+            <button type="submit" class="btn-danger small">Remove</button>
+          </form>
+        </span>
+      </div>
+    <% }) %>
+  </div>
+
+  <div class="cart-summary">
+    <p class="cart-total">Total: <strong>$<%= total.toFixed(2) %></strong></p>
+    <div class="cart-actions">
+      <a href="/" class="btn-outline">Continue Shopping</a>
+      <a href="/checkout" class="btn-solid">Proceed to Checkout</a>
+    </div>
+  </div>
+<% } %>
+
+<%- include('partials/footer') %>

@@ -1,0 +1,31 @@
+<% title = 'My Orders — ShopEasy' %>
+<%- include('partials/header') %>
+
+<h1 class="page-title">My Orders</h1>
+
+<% if (orders.length === 0) { %>
+  <div class="empty-state">
+    <p>You haven't placed any orders yet.</p>
+    <a href="/" class="btn-solid">Start Shopping</a>
+  </div>
+<% } else { %>
+  <div class="orders-list">
+    <% orders.forEach(order => { %>
+      <div class="order-card">
+        <div class="order-card-header">
+          <span>Order #<%= order.id %></span>
+          <span class="status-badge"><%= order.status %></span>
+        </div>
+        <p class="order-date"><%= new Date(order.createdAt).toLocaleString() %></p>
+        <ul class="order-items">
+          <% order.items.forEach(item => { %>
+            <li><%= item.name %> &times; <%= item.qty %> — $<%= item.subtotal.toFixed(2) %></li>
+          <% }) %>
+        </ul>
+        <p class="order-total">Total: <strong>$<%= order.total.toFixed(2) %></strong></p>
+      </div>
+    <% }) %>
+  </div>
+<% } %>
+
+<%- include('partials/footer') %>

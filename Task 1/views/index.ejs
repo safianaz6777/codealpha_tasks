@@ -1,0 +1,47 @@
+<% title = 'ShopEasy — Home' %>
+<%- include('partials/header') %>
+
+<section class="hero">
+  <h1>Discover Great Products</h1>
+  <p>Quality items at honest prices — shop electronics, fashion and home essentials.</p>
+</section>
+
+<div class="category-bar">
+  <% categories.forEach(cat => { %>
+    <a href="/?category=<%= encodeURIComponent(cat) %>"
+       class="chip <%= activeCategory === cat ? 'chip-active' : '' %>">
+      <%= cat %>
+    </a>
+  <% }) %>
+</div>
+
+<div class="product-grid">
+  <% if (products.length === 0) { %>
+    <p class="empty-state">No products found. Try a different search or category.</p>
+  <% } %>
+  <% products.forEach(p => { %>
+    <div class="product-card">
+      <a href="/product/<%= p.id %>" class="product-thumb" style="background: <%= p.color %>1a;">
+        <span style="font-size: 3.5rem;"><%= p.emoji %></span>
+      </a>
+      <div class="product-card-body">
+        <span class="product-category"><%= p.category %></span>
+        <h3><a href="/product/<%= p.id %>"><%= p.name %></a></h3>
+        <p class="product-price">$<%= p.price.toFixed(2) %></p>
+        <% if (p.stock === 0) { %>
+          <span class="stock-badge out">Out of stock</span>
+        <% } else if (p.stock < 10) { %>
+          <span class="stock-badge low">Only <%= p.stock %> left</span>
+        <% } %>
+        <form action="/cart/add/<%= p.id %>" method="POST" class="add-form">
+          <input type="hidden" name="quantity" value="1" />
+          <button type="submit" class="btn-solid full-width" <%= p.stock === 0 ? 'disabled' : '' %>>
+            Add to Cart
+          </button>
+        </form>
+      </div>
+    </div>
+  <% }) %>
+</div>
+
+<%- include('partials/footer') %>

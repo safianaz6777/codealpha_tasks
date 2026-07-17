@@ -1,0 +1,35 @@
+<% title = product.name + ' — ShopEasy' %>
+<%- include('partials/header') %>
+
+<div class="breadcrumb">
+  <a href="/">Home</a> / <a href="/?category=<%= encodeURIComponent(product.category) %>"><%= product.category %></a> / <%= product.name %>
+</div>
+
+<div class="product-detail">
+  <div class="product-detail-image" style="background: <%= product.color %>1a;">
+    <span style="font-size: 9rem;"><%= product.emoji %></span>
+  </div>
+
+  <div class="product-detail-info">
+    <span class="product-category"><%= product.category %></span>
+    <h1><%= product.name %></h1>
+    <p class="product-detail-price">$<%= product.price.toFixed(2) %></p>
+    <p class="product-description"><%= product.description %></p>
+
+    <% if (product.stock === 0) { %>
+      <p class="stock-badge out">Out of stock</p>
+    <% } else { %>
+      <p class="stock-info"><%= product.stock %> units available</p>
+
+      <form action="/cart/add/<%= product.id %>" method="POST" class="detail-add-form">
+        <label for="quantity">Quantity</label>
+        <input type="number" name="quantity" id="quantity" value="1" min="1" max="<%= product.stock %>" />
+        <button type="submit" class="btn-solid">Add to Cart</button>
+      </form>
+    <% } %>
+
+    <a href="/" class="back-link">&larr; Continue shopping</a>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
